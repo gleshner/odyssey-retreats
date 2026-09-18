@@ -152,8 +152,14 @@ app.post('/contact', contactLimiter, async (req, res) => {
     // Sent via SendGrid's HTTPS API (not SMTP) — GoDaddy Node.js Hosting only
     // allows outbound traffic on ports 80/443, so a port-587 SMTP relay would
     // silently fail there. Get a key at https://app.sendgrid.com/settings/api_keys
-    // and set SENDGRID_API_KEY (and optionally SENDGRID_FROM_EMAIL, which must
-    // be a verified sender/domain in your SendGrid account).
+    // and set SENDGRID_API_KEY.
+    //
+    // CONTACT_FORM_TO_EMAIL / SENDGRID_FROM_EMAIL: info@odyssey-retreats.com
+    // has no working mailbox yet, so both default to site.email but should be
+    // overridden (in .env / your host's secrets) to a real, verified inbox
+    // until the domain has real email hosting set up.
+    const recipient = process.env.CONTACT_FORM_TO_EMAIL || site.email;
+    const sender = process.env.SENDGRID_FROM_EMAIL || recipient;
     if (process.env.SENDGRID_API_KEY) {
       const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
         method: 'POST',
@@ -162,8 +168,8 @@ app.post('/contact', contactLimiter, async (req, res) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          personalizations: [{ to: [{ email: site.email }] }],
-          from: { email: process.env.SENDGRID_FROM_EMAIL || site.email, name: 'Odyssey Retreats Website' },
+          personalizations: [{ to: [{ email: recipient }] }],
+          from: { email: sender, name: 'Odyssey Retreats Website' },
           reply_to: { email, name },
           subject: `New Inquiry from ${name}${retreat ? ` — ${retreat}` : ''}`,
           content: [{

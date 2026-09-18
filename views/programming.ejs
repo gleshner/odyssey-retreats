@@ -1,0 +1,91 @@
+<%- include('partials/head', { meta: { title: 'Programming', description: 'Expert-led workshops, seminars, and social events designed to give couples new tools for communication, intimacy, and connection.' } }) %>
+<body class="page-body">
+<%- include('partials/nav') %>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1800&q=85')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="t-eyebrow" style="margin-bottom:14px">Workshops &amp; Events</p>
+    <h1 class="t-title-lg">Our <em>Programming</em></h1>
+  </div>
+</section>
+
+<section class="prog-page">
+  <div class="prog-intro fade-up">
+    <p class="t-eyebrow prog-eyebrow on-light" style="margin-bottom:16px">What to Expect</p>
+    <h2 class="t-title-md" style="color:var(--ink); margin-bottom:24px; font-family:var(--font-serif)">A full weekend built for growth.</h2>
+    <p class="t-body-warm">Each retreat is filled with workshops, seminars, and special events. We bring in national presenters for every retreat so you get the newest thinking and most effective techniques. Our educators are versed in traditional western teachings as well as a wide variety of eastern philosophies.</p>
+  </div>
+
+  <!-- Daily Schedule -->
+  <div class="prog-schedule-section fade-up">
+    <p class="schedule-label" style="margin-bottom:24px; font-size:0.82rem">Typical Daily Schedule</p>
+    <div style="max-width:560px">
+      <div class="sch-row"><span class="sch-time">9:00 – 10:00 am</span><span class="sch-event">Breakfast</span></div>
+      <div class="sch-row"><span class="sch-time">10:00am – 1:00pm</span><span class="sch-event">Morning Workshops</span><span class="sch-tag">Workshop</span></div>
+      <div class="sch-row"><span class="sch-time">1:00 – 2:30 pm</span><span class="sch-event">Lunch</span></div>
+      <div class="sch-row"><span class="sch-time">2:30 – 6:00 pm</span><span class="sch-event">Afternoon Workshops</span><span class="sch-tag">Workshop</span></div>
+      <div class="sch-row"><span class="sch-time">6:00 – 8:00 pm</span><span class="sch-event">Dinner</span></div>
+      <div class="sch-row"><span class="sch-time">8:00 – 9:00 pm</span><span class="sch-event">Special Interest Groups</span></div>
+      <div class="sch-row"><span class="sch-time">9:00pm – 1:00am</span><span class="sch-event">Evening Social Event</span><span class="sch-tag">Social</span></div>
+    </div>
+  </div>
+
+  <!-- Workshop themes -->
+  <div class="prog-workshops-section fade-up">
+    <p class="schedule-label" style="margin-bottom:8px">Workshop Themes</p>
+    <p class="t-body-warm" style="margin-bottom:32px; max-width:520px">Throughout the weekend you'll be introduced to new concepts and perspectives. Our workshops help you:</p>
+    <div class="prog-full-workshops">
+      <% workshops.forEach(w => { %>
+      <div class="ws-full-card">
+        <h3 class="ws-full-title"><%= w.title %></h3>
+        <p class="ws-full-desc"><%= w.desc %></p>
+      </div>
+      <% }) %>
+      <div class="ws-full-card">
+        <h3 class="ws-full-title">Fan the Flames of Romance</h3>
+        <p class="ws-full-desc">Rediscover the spark that brought you together. Learn practical approaches to keeping romance alive through the rhythms of daily life.</p>
+      </div>
+      <div class="ws-full-card">
+        <h3 class="ws-full-title">Life Through New Eyes</h3>
+        <p class="ws-full-desc">See your relationship — and your life together — from an entirely new vantage point. Shift from reaction to possibility.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key insight -->
+  <div style="margin-top:64px; padding-top:64px; border-top:1px solid rgba(155,122,62,0.12); fade-up">
+    <div style="background:rgba(155,122,62,0.08); border-left:2px solid var(--gold-dk); padding:32px 36px; max-width:680px">
+      <p style="font-family:var(--font-serif); font-size:1.25rem; font-style:italic; color:var(--ink); line-height:1.6; margin-bottom:12px">
+        &ldquo;You never hear 'I want a divorce — my partner understands me.' At the deepest level, most coupled individuals do not feel understood by their partner.&rdquo;
+      </p>
+      <p style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold-dk)">The Foundation of Our Workshops</p>
+    </div>
+  </div>
+</section>
+
+<!-- Image strip -->
+<section style="display:grid; grid-template-columns:repeat(3,1fr); gap:4px">
+  <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=700&q=80" alt="Bonfire evening social" loading="lazy" style="width:100%; height:320px; object-fit:cover; filter:brightness(0.7)">
+  <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=700&q=80" alt="Forest setting" loading="lazy" style="width:100%; height:320px; object-fit:cover; filter:brightness(0.7)">
+  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80" alt="Group workshop" loading="lazy" style="width:100%; height:320px; object-fit:cover; filter:brightness(0.7)">
+</section>
+
+<section class="cta-section">
+  <div class="cta-watermark">RETREAT</div>
+  <div class="cta-inner">
+    <p class="t-eyebrow cta-eyebrow on-light">Ready to Begin?</p>
+    <h2 class="t-title-lg cta-title">Find your retreat.</h2>
+    <p class="cta-body">Four retreats per year. All-inclusive camp and hotel options. Registration opens daily at noon.</p>
+    <div class="btn-group cta-group">
+      <a href="/registration" class="btn btn-gold">View Upcoming Retreats</a>
+      <a href="/accommodations" class="btn btn-outline-dark">See Accommodations</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+<script src="/js/main.js"></script>
+</body>
+</html>

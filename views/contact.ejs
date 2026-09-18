@@ -1,0 +1,93 @@
+<%- include('partials/head', { meta: { title: 'Contact', description: 'Get in touch with Odyssey Retreats. General inquiries, registration questions, and more.' } }) %>
+<body class="page-body">
+<%- include('partials/nav') %>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1800&q=85')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="t-eyebrow" style="margin-bottom:14px">Get in Touch</p>
+    <h1 class="t-title-lg"><em>Contact</em> Us</h1>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-info fade-up">
+      <p class="t-eyebrow m-eyebrow on-light" style="margin-bottom:24px">Reach Out</p>
+      <h2 class="t-title-md" style="color:var(--ink); font-family:var(--font-serif); margin-bottom:32px">We'd love to hear from you.</h2>
+
+      <div class="contact-info-block">
+        <p class="contact-info-label">General Information</p>
+        <p class="contact-info-val"><a href="mailto:<%= site.email %>"><%= site.email %></a></p>
+      </div>
+      <div class="contact-info-block">
+        <p class="contact-info-label">Registration Questions</p>
+        <p class="contact-info-val"><a href="mailto:<%= site.registrarEmail %>"><%= site.registrarEmail %></a></p>
+      </div>
+      <div class="contact-info-block">
+        <p class="contact-info-label">Phone</p>
+        <p class="contact-info-val"><a href="tel:+15102060875"><%= site.phone %></a></p>
+        <p style="font-size:0.78rem; color:var(--stone); margin-top:4px">Please leave a message if no one answers — we return all calls promptly.</p>
+      </div>
+
+      <div style="margin-top:48px; padding-top:40px; border-top:1px solid rgba(155,122,62,0.15)">
+        <p style="font-family:var(--font-serif); font-size:1.1rem; font-style:italic; color:var(--ink); line-height:1.6; margin-bottom:20px">
+          &ldquo;Not sure which retreat is right for you? We're happy to talk it through. Many couples find a short conversation is all they need to take the first step.&rdquo;
+        </p>
+        <div style="width:28px; height:1px; background:var(--gold-dk)"></div>
+      </div>
+    </div>
+
+    <div class="contact-form fade-up delay-1">
+      <% if (success) { %>
+      <div class="form-success">
+        <strong>Message sent.</strong> Thank you — we'll be in touch within 48 hours. In the meantime, feel free to browse our <a href="/faq" style="color:var(--gold-dk)">FAQ page</a>.
+      </div>
+      <% } %>
+      <% if (error) { %>
+      <div class="form-error"><%= error %></div>
+      <% } %>
+
+      <form method="POST" action="/contact">
+        <div class="form-row-double">
+          <div>
+            <label class="form-label" for="name">Your Name *</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="First and last name" required>
+          </div>
+          <div>
+            <label class="form-label" for="partner">Partner's Name</label>
+            <input class="form-input" type="text" id="partner" name="partner" placeholder="Optional">
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="email">Email Address *</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="retreat">Retreat of Interest</label>
+          <select class="form-select" id="retreat" name="retreat">
+            <option value="">Select a retreat (optional)</option>
+            <option value="Spring Camp Retreat">Spring Camp Retreat</option>
+            <option value="Fall Camp Retreat">Fall Camp Retreat</option>
+            <option value="Fall Hotel Convention">Fall Hotel Convention</option>
+            <option value="Winter Hotel Convention">Winter Hotel Convention</option>
+            <option value="Day Pass">Day Pass Inquiry</option>
+            <option value="General">General Question</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="message">Message *</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="Tell us what's on your mind. Any questions about registration, accommodations, or programming are welcome." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center">Send Message &#8594;</button>
+        <p class="form-notice">We typically respond within 48 hours. For urgent registration questions, please call or email us directly.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+<script src="/js/main.js"></script>
+</body>
+</html>

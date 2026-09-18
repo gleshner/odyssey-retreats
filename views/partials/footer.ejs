@@ -1,0 +1,41 @@
+<footer class="site-footer">
+  <div>
+    <div class="footer-brand">Odyssey <em>Retreats</em></div>
+    <p class="footer-desc">Helping couples build stronger, more connected relationships since 2000. Serving the greater Baltimore–Washington corridor and couples across the country.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigate</div>
+    <nav class="footer-col-links">
+      <a href="/mission">Our Mission</a>
+      <a href="/programming">Programming</a>
+      <a href="/accommodations">Accommodations</a>
+      <a href="/registration">Registration</a>
+      <a href="/faq">FAQ</a>
+      <a href="/contact">Contact Us</a>
+    </nav>
+  </div>
+  <div>
+    <div class="footer-col-title">Retreats</div>
+    <nav class="footer-col-links">
+      <a href="/registration#spring-camp">Spring Camp Retreat</a>
+      <a href="/registration#fall-camp">Fall Camp Retreat</a>
+      <a href="/registration#fall-convention">Fall Convention</a>
+      <a href="/registration#winter-convention">Winter Convention</a>
+    </nav>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <nav class="footer-col-links">
+      <a href="mailto:<%= site.email %>"><%= site.email %></a>
+      <a href="mailto:<%= site.registrarEmail %>"><%= site.registrarEmail %></a>
+      <a href="tel:<%= site.phone.replace(/-/g,'') %>"><%= site.phone %></a>
+    </nav>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>&copy; <%= new Date().getFullYear() %> Odyssey Events. All Rights Reserved.</span>
+  <div class="footer-bottom-links">
+    <a href="/faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </div>
+</div>

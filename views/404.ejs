@@ -1,0 +1,18 @@
+<%- include('partials/head', { meta: { title: 'Page Not Found' } }) %>
+<body class="page-body">
+<%- include('partials/nav') %>
+<div class="not-found">
+  <div>
+    <div class="not-found-num">404</div>
+    <h1 class="not-found-title">Page not found.</h1>
+    <p class="not-found-text">The page you were looking for doesn't seem to exist.</p>
+    <div class="btn-group" style="justify-content:center">
+      <a href="/" class="btn btn-gold">Return Home</a>
+      <a href="/contact" class="btn btn-outline">Contact Us</a>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>
+<script src="/js/main.js"></script>
+</body>
+</html>

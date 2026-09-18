@@ -1,0 +1,20 @@
+<nav class="site-nav" id="site-nav">
+  <a href="/" class="nav-logo">Odyssey <em>Retreats</em></a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/mission"       class="<%= page==='mission' ? 'active' : '' %>">Mission</a></li>
+    <li><a href="/programming"   class="<%= page==='programming' ? 'active' : '' %>">Programming</a></li>
+    <li><a href="/accommodations" class="<%= page==='accommodations' ? 'active' : '' %>">Accommodations</a></li>
+    <li><a href="/registration"  class="<%= page==='registration' ? 'active' : '' %>">Registration</a></li>
+    <li><a href="/faq"           class="<%= page==='faq' ? 'active' : '' %>">FAQ</a></li>
+    <li><a href="/contact"       class="<%= page==='contact' ? 'active' : '' %>">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <span class="nav-phone"><%= site.phone %></span>
+    <a href="/registration" class="nav-cta">Register</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>

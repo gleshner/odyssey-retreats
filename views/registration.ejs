@@ -1,0 +1,69 @@
+<%- include('partials/head', { meta: { title: 'Registration', description: 'Register for an Odyssey Retreats weekend. Spring and Fall camp retreats. Fall and Winter hotel conventions. All-inclusive packages and day passes available.' } }) %>
+<body class="page-body">
+<%- include('partials/nav') %>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1475688621402-4257c812d6db?auto=format&fit=crop&w=1800&q=85')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="t-eyebrow" style="margin-bottom:14px">Reserve Your Place</p>
+    <h1 class="t-title-lg"><em>Registration</em></h1>
+  </div>
+</section>
+
+<section class="reg-section">
+
+  <div class="reg-intro fade-up">
+    <p class="t-eyebrow m-eyebrow on-light" style="margin-bottom:16px">How It Works</p>
+    <h2 class="t-title-md" style="color:var(--ink); font-family:var(--font-serif); margin-bottom:20px">All-inclusive weekends.<br>Simple registration.</h2>
+    <p class="t-body-warm">Registration for all retreats opens each day at noon and runs until midnight. The core weekend package is 4 days beginning on Friday and running through Monday. This gives us full days of workshops and evening social events every day, including Sunday.</p>
+  </div>
+
+  <div class="reg-grid">
+    <% retreats.forEach(r => { %>
+    <div class="reg-card" id="<%= r.slug %>" style="background-image:none">
+      <div style="height:200px; overflow:hidden; margin:-40px -40px 28px; position:relative">
+        <img src="<%= r.image %>" alt="<%= r.title %>" loading="lazy" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.6)">
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(250,248,244,0.95) 0%, transparent 60%)"></div>
+      </div>
+      <p class="reg-card-season"><%= r.type %> &middot; <%= r.season %></p>
+      <h3 class="reg-card-title"><%= r.title %></h3>
+      <p class="reg-card-desc"><%= r.description %></p>
+      <div class="reg-card-meta">
+        <div class="reg-meta-row"><strong>Dates:</strong>&nbsp;<%= r.dates %></div>
+        <div class="reg-meta-row"><strong>Location:</strong>&nbsp;<%= r.location %></div>
+        <div class="reg-meta-row"><strong>Included:</strong>&nbsp;<%= r.inclusive ? 'All lodging, meals, workshops &amp; social events' : 'All workshops &amp; social events (hotel booked separately)' %></div>
+        <% r.features.forEach(f => { %>
+        <div class="reg-meta-row"><%= f %></div>
+        <% }) %>
+      </div>
+      <a href="/contact?retreat=<%= encodeURIComponent(r.title) %>" class="btn btn-gold" style="width:100%; justify-content:center">Register for This Retreat</a>
+    </div>
+    <% }) %>
+  </div>
+
+  <div class="reg-note fade-up">
+    <h3 class="reg-note-title">Day Passes</h3>
+    <p class="reg-note-text">We understand that work and family sometimes make a full weekend impossible. While we strongly recommend the complete experience — what is more important than the health of your relationship? — day passes are available for those who truly cannot attend the full weekend, and for returning guests from previous years.</p>
+    <div style="margin-top:16px"><a href="/contact" class="m-link">Ask about day passes &#8594;</a></div>
+  </div>
+
+  <div class="reg-note fade-up" style="margin-top:20px">
+    <h3 class="reg-note-title">Returning Guests</h3>
+    <p class="reg-note-text">Many of our guests return year after year. Each retreat offers fresh presenters and new programming, so every experience is unique. Returning guests are also welcome to arrive a day or two early and extend their stay — many treat this as a 5 or 6 day holiday vacation from everyday life.</p>
+  </div>
+
+  <div style="margin-top:64px; text-align:center" class="fade-up">
+    <p class="t-body-warm" style="margin-bottom:24px">Questions about registration? We're happy to help.</p>
+    <div class="btn-group" style="justify-content:center">
+      <a href="mailto:<%= site.registrarEmail %>" class="btn btn-gold">Email the Registrar</a>
+      <a href="/faq" class="btn btn-outline-dark">Read the FAQ</a>
+    </div>
+  </div>
+
+</section>
+
+<%- include('partials/footer') %>
+<script src="/js/main.js"></script>
+</body>
+</html>

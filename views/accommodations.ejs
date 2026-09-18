@@ -1,0 +1,97 @@
+<%- include('partials/head', { meta: { title: 'Accommodations', description: 'Two retreat settings: a private 200-acre camp in Northern Maryland and hotel conventions at Baltimore\'s Inner Harbor.' } }) %>
+<body class="page-body">
+<%- include('partials/nav') %>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1800&q=85')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="t-eyebrow" style="margin-bottom:14px">Where We Gather</p>
+    <h1 class="t-title-lg">Our <em>Accommodations</em></h1>
+  </div>
+</section>
+
+<section class="accom-section">
+
+  <!-- Camp -->
+  <div class="accom-block" id="camp">
+    <div class="accom-inner fade-up">
+      <div class="accom-imgs">
+        <div class="accom-img-main">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80" alt="Maryland woodland camp" loading="lazy">
+        </div>
+        <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=500&q=80" alt="Camp cabin" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=500&q=80" alt="Campfire evenings" loading="lazy">
+      </div>
+      <div>
+        <p class="accom-type">Spring &amp; Fall Retreats</p>
+        <h2 class="t-title-md accom-title" style="color:var(--ink); font-family:var(--font-serif)">Private Woodland Camp<br>Northern Maryland</h2>
+        <p class="t-body-warm accom-desc">Our Spring and Fall Retreats are held at a private 200-acre facility in Northern Maryland. The site is minutes from I-95 and is easily reached from New York and Washington DC. The retreat is also accessible by public transportation.</p>
+        <p class="t-body-warm accom-desc" style="margin-top:12px">If you are flying, the best airport is Baltimore Washington International (BWI). We recommend renting a car for the 30-minute drive north — though shuttles and carpooling options are available after registration.</p>
+        <p class="t-body-warm accom-desc" style="margin-top:12px">The facility prides itself on the quality of its food service. All meals — breakfast, lunch, dinner, and a midnight snack — are included in your registration. The kitchen accommodates vegetarian diets and most dietary restrictions.</p>
+        <div class="accom-amenities">
+          <span class="amenity-pill">40 private cabins</span>
+          <span class="amenity-pill">Real beds &amp; mattresses</span>
+          <span class="amenity-pill">Full bathrooms</span>
+          <span class="amenity-pill">Hot showers</span>
+          <span class="amenity-pill">Electricity</span>
+          <span class="amenity-pill">Swimming pool</span>
+          <span class="amenity-pill">Private lake</span>
+          <span class="amenity-pill">Nightly bonfires</span>
+          <span class="amenity-pill">Miles of hiking trails</span>
+          <span class="amenity-pill">200+ acres</span>
+          <span class="amenity-pill">Tent camping option</span>
+          <span class="amenity-pill">All meals included</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hotel -->
+  <div class="accom-block" id="hotel">
+    <div class="accom-inner reverse fade-up">
+      <div class="accom-imgs">
+        <div class="accom-img-main">
+          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=900&q=80" alt="Baltimore Inner Harbor" loading="lazy">
+        </div>
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=500&q=80" alt="Hotel convention room" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1549294413-26f195200c16?auto=format&fit=crop&w=500&q=80" alt="Hotel accommodations" loading="lazy">
+      </div>
+      <div>
+        <p class="accom-type">Fall &amp; Winter Conventions</p>
+        <h2 class="t-title-md accom-title" style="color:var(--ink); font-family:var(--font-serif)">Hotel Convention<br>Baltimore Inner Harbor</h2>
+        <p class="t-body-warm accom-desc">Our Fall and Winter Conventions are larger hotel-based events held at Baltimore's Inner Harbor. These gatherings broaden our focus and deal with both interpersonal relationships as well as wider community and social topics.</p>
+        <p class="t-body-warm accom-desc" style="margin-top:12px">We recommend Baltimore/Washington International (BWI) if you are flying. Transportation is easy — grab the MARC train to the station directly across from the hotel, or take an Uber for approximately $30.</p>
+        <p class="t-body-warm accom-desc" style="margin-top:12px">After you register, our hotel coordinator will be in touch to assist with your room reservation and answer any travel questions.</p>
+        <div class="accom-amenities">
+          <span class="amenity-pill">Inner Harbor setting</span>
+          <span class="amenity-pill">Hotel accommodations</span>
+          <span class="amenity-pill">MARC train accessible</span>
+          <span class="amenity-pill">Uber ~$30 from BWI</span>
+          <span class="amenity-pill">Expanded programming</span>
+          <span class="amenity-pill">Day passes available</span>
+          <span class="amenity-pill">Hotel coordinator support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="cta-section">
+  <div class="cta-watermark">GATHER</div>
+  <div class="cta-inner">
+    <p class="t-eyebrow cta-eyebrow on-light">Reserve Your Spot</p>
+    <h2 class="t-title-lg cta-title">Choose your setting.</h2>
+    <p class="cta-body">Whether you prefer the privacy of the Maryland woodland or the energy of Baltimore's Inner Harbor, there is a retreat designed for you.</p>
+    <div class="btn-group cta-group">
+      <a href="/registration" class="btn btn-gold">View Dates &amp; Register</a>
+      <a href="/faq" class="btn btn-outline-dark">Read the FAQ</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+<script src="/js/main.js"></script>
+</body>
+</html>

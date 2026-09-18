@@ -1,0 +1,210 @@
+<%- include('partials/head', { meta: { title: null } }) %>
+<body class="page-body">
+
+<%- include('partials/nav') %>
+
+<!-- ── Hero ────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <p class="t-eyebrow hero-eyebrow fade-up">Couples Retreats &amp; Workshops</p>
+      <h1 class="t-title-xl hero-title fade-up delay-1">
+        Begin the journey<br>back to <em>each other.</em>
+      </h1>
+      <div class="hero-body fade-up delay-2">
+        <p>Four times a year, in the woodlands of Maryland or the heart of Baltimore, we create the conditions for real transformation in your relationship — and in yourself.</p>
+      </div>
+      <div class="btn-group fade-up delay-3">
+        <a href="/registration" class="btn btn-gold">View Retreats &amp; Register</a>
+        <a href="/programming" class="btn btn-outline">Explore the Experience</a>
+      </div>
+      <div class="hero-scroll-hint fade-up delay-4">
+        <div class="scroll-line"></div>
+        <span>Scroll to discover</span>
+      </div>
+    </div>
+    <div class="hero-right fade-up delay-2">
+      <div class="hero-card">
+        <p class="hero-card-quote">
+          You never hear "I want a divorce — my partner understands me." The deepest need in every relationship is to be truly heard.
+        </p>
+        <div class="hero-card-attr">The Odyssey Philosophy</div>
+        <div class="hero-stats">
+          <div class="hs">
+            <div class="hs-num">4</div>
+            <div class="hs-label">Retreats / year</div>
+          </div>
+          <div class="hs">
+            <div class="hs-num">200ac</div>
+            <div class="hs-label">Private camp</div>
+          </div>
+          <div class="hs">
+            <div class="hs-num">20+</div>
+            <div class="hs-label">Years of service</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Manifesto ────────────────────────────────────────────────────── -->
+<section class="manifesto">
+  <div class="m-emblem">
+    <div class="m-ring"><div class="m-ring-text">OR</div></div>
+    <p class="m-est">Est. 2000<br>Baltimore–Washington<br>Region</p>
+  </div>
+  <div class="m-right">
+    <p class="t-eyebrow m-eyebrow on-light fade-up">About Odyssey</p>
+    <h2 class="t-title-lg m-title fade-up delay-1">
+      Relationships don't fail from lack of love.<br>They drift from lack of <em>tools.</em>
+    </h2>
+    <p class="t-body-warm m-text fade-up delay-2">When you first came together, you carried all the love you needed. What changed wasn't the feeling — it was the distance that grew when life took you in different directions.</p>
+    <p class="t-body-warm m-text fade-up delay-2">At Odyssey, our educators help you close that distance. Through workshops designed for real couples, you'll develop the skills to hear each other again, to choose each other again, and to build the life you both deserve.</p>
+    <a href="/mission" class="m-link fade-up delay-3">Read our mission &#8594;</a>
+  </div>
+</section>
+
+<!-- ── Experiences ──────────────────────────────────────────────────── -->
+<section class="experiences">
+  <div class="experiences-header">
+    <div class="exp-header-left">
+      <p class="t-eyebrow" style="margin-bottom:16px">Our Retreats</p>
+      <h2 class="t-title-lg">Four experiences a year</h2>
+    </div>
+    <p class="exp-header-right">Two camp retreats in the Maryland woodland. Two hotel conventions in Baltimore. All designed around transformation.</p>
+  </div>
+  <div class="retreat-grid">
+    <% retreats.forEach(r => { %>
+    <article class="retreat-card">
+      <img class="retreat-card-img" src="<%= r.image %>" alt="<%= r.title %>" loading="lazy">
+      <div class="retreat-card-overlay">
+        <span class="retreat-tag"><%= r.type %></span>
+        <div class="retreat-card-body">
+          <p class="retreat-season"><%= r.season %> &middot; <%= r.dates %></p>
+          <h3 class="retreat-card-title"><%= r.title %></h3>
+          <p class="retreat-card-desc"><%= r.description %></p>
+          <div class="retreat-features">
+            <% r.features.slice(0,3).forEach(f => { %>
+            <div class="retreat-feature"><%= f %></div>
+            <% }) %>
+          </div>
+          <a href="/registration#<%= r.slug %>" class="retreat-cta">Register &#8594;</a>
+        </div>
+      </div>
+    </article>
+    <% }) %>
+  </div>
+</section>
+
+<!-- ── Story Steps ──────────────────────────────────────────────────── -->
+<div class="story-steps">
+  <div class="story-inner">
+    <div class="story-step fade-up">
+      <div class="step-num">01</div>
+      <div class="step-title">Register</div>
+      <p class="step-text">Choose your retreat and register online. Registration opens daily at noon.</p>
+    </div>
+    <div class="story-step fade-up delay-1">
+      <div class="step-num">02</div>
+      <div class="step-title">Prepare</div>
+      <p class="step-text">You'll receive travel details, accommodation info, and what to expect — all before you arrive.</p>
+    </div>
+    <div class="story-step fade-up delay-2">
+      <div class="step-num">03</div>
+      <div class="step-title">Arrive</div>
+      <p class="step-text">Check in, settle into your cabin or hotel room, and meet your fellow couples.</p>
+    </div>
+    <div class="story-step fade-up delay-3">
+      <div class="step-num">04</div>
+      <div class="step-title">Transform</div>
+      <p class="step-text">Four days of workshops, meals, evenings, and conversations that stay with you long after you leave.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── Programming preview ──────────────────────────────────────────── -->
+<section class="programming-section">
+  <div class="prog-grid">
+    <div class="prog-left">
+      <p class="t-eyebrow prog-eyebrow on-light fade-up">Programming</p>
+      <h2 class="t-title-lg prog-title fade-up delay-1">A weekend<br>built for growth</h2>
+      <p class="t-body-warm prog-body fade-up delay-2">Our workshops draw from both western psychology and eastern philosophy. National presenters bring new thinking each retreat — no two weekends are the same.</p>
+      <div class="fade-up delay-3">
+        <p class="schedule-label">Typical daily flow</p>
+        <div class="schedule-rows">
+          <div class="sch-row"><span class="sch-time">9:00 am</span><span class="sch-event">Breakfast</span></div>
+          <div class="sch-row"><span class="sch-time">10am – 1pm</span><span class="sch-event">Morning Workshops</span><span class="sch-tag">Workshop</span></div>
+          <div class="sch-row"><span class="sch-time">1:00 pm</span><span class="sch-event">Lunch</span></div>
+          <div class="sch-row"><span class="sch-time">2:30 – 6pm</span><span class="sch-event">Afternoon Workshops</span><span class="sch-tag">Workshop</span></div>
+          <div class="sch-row"><span class="sch-time">6:00 pm</span><span class="sch-event">Dinner</span></div>
+          <div class="sch-row"><span class="sch-time">8:00 pm</span><span class="sch-event">Special Interest Groups</span></div>
+          <div class="sch-row"><span class="sch-time">9pm – 1am</span><span class="sch-event">Evening Social Event</span><span class="sch-tag">Social</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="prog-right fade-up delay-1">
+      <div class="workshop-list">
+        <% workshops.forEach((w, i) => { %>
+        <div class="ws-item <%= i === 0 ? 'active' : '' %>">
+          <div class="ws-item-title"><%= w.title %></div>
+          <div class="ws-item-desc"><%= w.desc %></div>
+        </div>
+        <% }) %>
+      </div>
+      <div style="margin-top:28px">
+        <a href="/programming" class="m-link">Full programming details &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Testimonials ─────────────────────────────────────────────────── -->
+<section class="testimonials">
+  <div class="testi-header">
+    <p class="t-eyebrow" style="margin-bottom:16px; justify-content:center">What Couples Say</p>
+    <h2 class="t-title-lg" style="text-align:center">Voices from the journey</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="testi-mark">&ldquo;</div>
+      <p class="testi-text">We came not knowing what to expect and left with tools we still use every day. The weekend changed how we listen to each other — genuinely changed it.</p>
+      <div class="testi-rule"></div>
+      <div class="testi-author">Sarah &amp; Michael &middot; Baltimore</div>
+    </div>
+    <div class="testi-card fade-up delay-1">
+      <div class="testi-mark">&ldquo;</div>
+      <p class="testi-text">The camp setting made everything feel unhurried. For the first time in years we had real space — away from work, away from phones — to actually be with each other.</p>
+      <div class="testi-rule"></div>
+      <div class="testi-author">James &amp; Priya &middot; New York</div>
+    </div>
+    <div class="testi-card fade-up delay-2">
+      <div class="testi-mark">&ldquo;</div>
+      <p class="testi-text">We've attended three times now. Each retreat meets us exactly where we are. The facilitators have a rare gift for creating safety while asking the hard questions.</p>
+      <div class="testi-rule"></div>
+      <div class="testi-author">Derek &amp; Camille &middot; Washington DC</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ──────────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="cta-watermark">ODYSSEY</div>
+  <div class="cta-inner">
+    <p class="t-eyebrow cta-eyebrow on-light">Begin Your Journey</p>
+    <h2 class="t-title-lg cta-title">Your next chapter<br>starts with one weekend.</h2>
+    <p class="cta-body">Registration opens daily at noon. Spaces are limited — especially at the camp retreats. Your relationship is worth it.</p>
+    <div class="btn-group cta-group">
+      <a href="/registration" class="btn btn-gold">Register for a Retreat</a>
+      <a href="/contact" class="btn btn-outline-dark">Contact Us First</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+<script src="/js/main.js"></script>
+</body>
+</html>

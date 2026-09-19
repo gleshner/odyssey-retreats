@@ -4,8 +4,8 @@
   "description": "Odyssey Retreats website",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "nodemon --env-file-if-exists=.env server.js"
   },
   "dependencies": {
     "compression": "^1.7.4",

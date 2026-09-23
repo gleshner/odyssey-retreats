@@ -4,6 +4,7 @@
   "description": "Odyssey Retreats website",
   "main": "server.js",
   "scripts": {
+    "build": "true",
     "start": "node --env-file-if-exists=.env server.js",
     "dev": "nodemon --env-file-if-exists=.env server.js"
   },

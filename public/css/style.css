@@ -89,16 +89,16 @@ button { font-family: var(--font-sans); cursor: pointer; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=85');
+  background-image: url('/images/hero-couple.jpg');
   background-size: cover; background-position: center 40%;
-  filter: brightness(0.35);
+  filter: brightness(0.5);
   transform: scale(1.04);
   transition: transform 8s ease;
 }
 .hero-bg.loaded { transform: scale(1); }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(170deg, rgba(13,13,13,0.3) 0%, rgba(13,13,13,0.65) 60%, rgba(13,13,13,0.92) 100%);
+  background: linear-gradient(170deg, rgba(13,13,13,0.15) 0%, rgba(13,13,13,0.45) 60%, rgba(13,13,13,0.8) 100%);
 }
 .hero-grid-lines {
   position: absolute; inset: 0; opacity: 0.03;

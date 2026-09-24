@@ -42,6 +42,9 @@ const site = {
   phone: '510-206-0875',
   email: 'info@odyssey-retreats.com',
   registrarEmail: 'registrar@odyssey-retreats.com',
+  // Bumped on every server start (i.e. every deploy) so browsers/CDNs
+  // don't keep serving a stale cached style.css or main.js after a push.
+  version: Date.now(),
 };
 
 const retreats = [

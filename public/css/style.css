@@ -305,11 +305,11 @@ button { font-family: var(--font-sans); cursor: pointer; }
 }
 .page-hero-bg {
   position: absolute; inset: 0; background-size: cover; background-position: center;
-  filter: brightness(0.3);
+  filter: brightness(0.5);
 }
 .page-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(170deg, rgba(13,13,13,0.2) 0%, rgba(13,13,13,0.8) 100%);
+  background: linear-gradient(170deg, rgba(13,13,13,0.1) 0%, rgba(13,13,13,0.6) 100%);
 }
 .page-hero-content { position: relative; z-index: 1; padding: 60px var(--gutter); }
 .page-hero-content .t-eyebrow { margin-bottom: 16px; }

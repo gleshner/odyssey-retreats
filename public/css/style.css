@@ -91,14 +91,14 @@ button { font-family: var(--font-sans); cursor: pointer; }
   position: absolute; inset: 0;
   background-image: url('/images/hero-couple.jpg');
   background-size: cover; background-position: center 40%;
-  filter: brightness(0.5);
+  filter: brightness(0.58);
   transform: scale(1.04);
   transition: transform 8s ease;
 }
 .hero-bg.loaded { transform: scale(1); }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(170deg, rgba(13,13,13,0.15) 0%, rgba(13,13,13,0.45) 60%, rgba(13,13,13,0.8) 100%);
+  background: linear-gradient(170deg, rgba(13,13,13,0.13) 0%, rgba(13,13,13,0.38) 60%, rgba(13,13,13,0.68) 100%);
 }
 .hero-grid-lines {
   position: absolute; inset: 0; opacity: 0.03;
@@ -305,11 +305,11 @@ button { font-family: var(--font-sans); cursor: pointer; }
 }
 .page-hero-bg {
   position: absolute; inset: 0; background-size: cover; background-position: center;
-  filter: brightness(0.5);
+  filter: brightness(0.58);
 }
 .page-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(170deg, rgba(13,13,13,0.1) 0%, rgba(13,13,13,0.6) 100%);
+  background: linear-gradient(170deg, rgba(13,13,13,0.09) 0%, rgba(13,13,13,0.51) 100%);
 }
 .page-hero-content { position: relative; z-index: 1; padding: 60px var(--gutter); }
 .page-hero-content .t-eyebrow { margin-bottom: 16px; }

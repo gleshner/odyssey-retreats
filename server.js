@@ -97,7 +97,7 @@ const retreats = [
     title: 'Baltimore Winter Convention',
     dates: 'February 12–15, 2027',
     location: 'Baltimore Inner Harbor',
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=80',
+    image: '/images/baltimore-winter.jpg',
     colorClass: 'card-hotel-winter',
     description: 'Celebrate Valentine\'s weekend with an intimate, reflective convention at Baltimore\'s Inner Harbor — a chance to renew your connection together.',
     features: ['Baltimore Inner Harbor hotel', 'Valentine\'s Weekend programming', 'Broader relationship themes', 'Marc train / Uber accessible', 'Day passes available'],

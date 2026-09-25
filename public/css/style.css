@@ -388,6 +388,37 @@ button { font-family: var(--font-sans); cursor: pointer; }
 .reg-note-title { font-family: var(--font-serif); font-size: 1.2rem; color: var(--ink); margin-bottom: 10px; }
 .reg-note-text { font-size: 0.88rem; line-height: 1.7; color: #6A5E54; }
 
+/* ─── Registration: pricing ──────────────────────────────────────────── */
+.pricing-header { max-width: 640px; margin: 96px 0 40px; }
+.pricing-header h2 { color: var(--ink); margin-top: 16px; }
+.price-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-bottom: 12px; }
+.price-card { background: var(--warm-dk); padding: 40px; border-top: 2px solid transparent; transition: border-color 0.25s; }
+.price-card:hover { border-top-color: var(--gold-dk); }
+.price-card-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-dk); margin-bottom: 8px; }
+.price-card-sub { font-size: 0.85rem; color: #6A5E54; margin-bottom: 20px; }
+.price-includes { font-size: 0.85rem; line-height: 1.7; color: #6A5E54; margin-bottom: 24px; }
+.price-tiers { display: flex; flex-direction: column; }
+.price-tier { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid rgba(155,122,62,0.15); }
+.price-tier-label { font-size: 0.88rem; color: var(--ink); }
+.price-tier-amount { font-family: var(--font-serif); font-size: 1.35rem; color: var(--gold-dk); }
+.price-addons { margin-top: 20px; padding-top: 20px; border-top: 1px dashed rgba(155,122,62,0.3); }
+.price-addons-label { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-bottom: 6px; }
+.price-footnote { font-size: 0.78rem; line-height: 1.6; color: var(--stone); margin-top: 20px; font-style: italic; }
+.pricing-note { text-align: center; font-size: 0.82rem; color: var(--stone); margin: 24px 0 88px; }
+
+/* ─── Registration: policies ─────────────────────────────────────────── */
+.policy-section { background: var(--ink); padding: var(--section-pad) var(--gutter); margin: 0 calc(var(--gutter) * -1); }
+.policy-header { max-width: 640px; margin-bottom: 56px; }
+.policy-header h2 { color: var(--mist); margin-top: 16px; }
+.policy-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border-lt); }
+.policy-item { background: var(--ink-lt); padding: 32px 28px; border-left: 2px solid transparent; transition: border-color 0.25s; }
+.policy-item:hover { border-left-color: var(--gold); }
+.policy-item-num { font-family: var(--font-serif); font-size: 1.8rem; color: var(--gold); opacity: 0.4; line-height: 1; margin-bottom: 12px; }
+.policy-item-text { font-size: 0.88rem; line-height: 1.7; color: rgba(242,240,235,0.85); }
+.policy-item-text strong { color: var(--mist); font-weight: 600; }
+.policy-item-text a { color: var(--gold); border-bottom: 1px solid rgba(201,169,110,0.3); }
+.policy-item-text a:hover { color: var(--gold-lt); border-color: var(--gold-lt); }
+
 /* ─── FAQ page ───────────────────────────────────────────────────────── */
 .faq-section { background: var(--warm); padding: var(--section-pad) var(--gutter); }
 .faq-layout { display: grid; grid-template-columns: 280px 1fr; gap: 80px; align-items: start; }
@@ -495,6 +526,8 @@ button { font-family: var(--font-sans); cursor: pointer; }
   .mission-grid, .prog-grid, .accom-inner, .contact-grid, .faq-layout { grid-template-columns: 1fr; }
   .accom-inner.reverse { direction: ltr; }
   .reg-grid { grid-template-columns: 1fr; }
+  .price-grid { grid-template-columns: 1fr; }
+  .policy-list { grid-template-columns: 1fr; }
   .testi-grid { grid-template-columns: 1fr; }
   .site-footer { grid-template-columns: 1fr; gap: 40px; }
   .prog-full-workshops { grid-template-columns: 1fr; }

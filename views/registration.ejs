@@ -1,4 +1,4 @@
-<%- include('partials/head', { meta: { title: 'Registration', description: 'Register for an Odyssey Retreats weekend. Spring and Summer camp retreats. Fall and Winter hotel conventions. All-inclusive packages and day passes available.' } }) %>
+<%- include('partials/head', { meta: { title: 'Registration', description: 'Register for an Odyssey Retreats weekend. Spring and Summer camp retreats. Fall and Winter hotel conventions. Pricing, optional add-ons, and day passes available.' } }) %>
 <body class="page-body">
 <%- include('partials/nav') %>
 
@@ -16,7 +16,7 @@
   <div class="reg-intro fade-up">
     <p class="t-eyebrow m-eyebrow on-light" style="margin-bottom:16px">How It Works</p>
     <h2 class="t-title-md" style="color:var(--ink); font-family:var(--font-serif); margin-bottom:20px">All-inclusive weekends.<br>Simple registration.</h2>
-    <p class="t-body-warm">Registration for all retreats opens each day at noon and runs until midnight. The core weekend package is 4 days beginning on Friday and running through Monday. This gives us full days of workshops and evening social events every day, including Sunday.</p>
+    <p class="t-body-warm">Registration for each retreat stays open until it fills or the retreat begins — and the earlier you register, the better your rate (see Pricing below). The core weekend package is 4 days beginning on Friday and running through Monday, giving us full days of workshops and evening social events every day, including Sunday.</p>
   </div>
 
   <div class="reg-grid">
@@ -32,17 +32,95 @@
       <div class="reg-card-meta">
         <div class="reg-meta-row"><strong>Dates:</strong>&nbsp;<%= r.dates %></div>
         <div class="reg-meta-row"><strong>Location:</strong>&nbsp;<%= r.location %></div>
-        <div class="reg-meta-row"><strong>Included:</strong>&nbsp;<%= r.inclusive ? 'All lodging, meals, workshops & social events' : 'All workshops & social events (hotel booked separately)' %></div>
+        <div class="reg-meta-row"><strong>Retreat Fee:</strong>&nbsp;$275&ndash;$325 per person</div>
+        <% if (r.type === 'Camp Retreat') { %>
+        <div class="reg-meta-row"><strong>Includes:</strong>&nbsp;Workshops, seminars &amp; evening events; tent camping included</div>
+        <div class="reg-meta-row"><strong>Optional:</strong>&nbsp;Cabin space $195 &middot; Meal plan $185 (per person)</div>
+        <% } else { %>
+        <div class="reg-meta-row"><strong>Includes:</strong>&nbsp;Workshops, seminars &amp; evening events</div>
+        <div class="reg-meta-row"><strong>Note:</strong>&nbsp;Hotel room booked separately</div>
+        <% } %>
         <% r.features.forEach(f => { %>
         <div class="reg-meta-row"><%= f %></div>
         <% }) %>
       </div>
+      <%# TODO: point this at the third-party registration/payment system once Gregory provides the URL %>
       <a href="/contact?retreat=<%= encodeURIComponent(r.title) %>" class="btn btn-gold" style="width:100%; justify-content:center">Register for This Retreat</a>
     </div>
     <% }) %>
   </div>
 
-  <div class="reg-note fade-up">
+  <div class="pricing-header fade-up">
+    <p class="t-eyebrow m-eyebrow on-light">Investment</p>
+    <h2 class="t-title-md" style="font-family:var(--font-serif)">Pricing.</h2>
+    <p class="t-body-warm" style="margin-top:20px">All registration rates are per person, not per couple. Register early for the best rate.</p>
+  </div>
+
+  <div class="price-grid fade-up">
+    <div class="price-card">
+      <p class="price-card-label">Hotel Retreats</p>
+      <p class="price-card-sub">Fall Convention (San Jose) &amp; Winter Convention (Baltimore)</p>
+      <p class="price-includes">Retreat fee includes all daily workshops, seminars, breakout sessions, evening mixers, and social events.</p>
+      <div class="price-tiers">
+        <div class="price-tier"><span class="price-tier-label">Early Rate</span><span class="price-tier-amount">$275</span></div>
+        <div class="price-tier"><span class="price-tier-label">Standard Rate</span><span class="price-tier-amount">$300</span></div>
+        <div class="price-tier"><span class="price-tier-label">Last Minute Rate</span><span class="price-tier-amount">$325</span></div>
+      </div>
+      <p class="price-footnote">Hotel room booked separately — see Accommodations for rates.</p>
+    </div>
+    <div class="price-card">
+      <p class="price-card-label">Camp Retreats</p>
+      <p class="price-card-sub">Spring Retreat (Maryland) &amp; Summer Retreat (California)</p>
+      <p class="price-includes">Retreat fee includes all daily workshops, seminars, breakout sessions, evening mixers, and social events. Tent camping is included.</p>
+      <div class="price-tiers">
+        <div class="price-tier"><span class="price-tier-label">Early Rate</span><span class="price-tier-amount">$275</span></div>
+        <div class="price-tier"><span class="price-tier-label">Standard Rate</span><span class="price-tier-amount">$300</span></div>
+        <div class="price-tier"><span class="price-tier-label">Last Minute Rate</span><span class="price-tier-amount">$325</span></div>
+      </div>
+      <div class="price-addons">
+        <p class="price-addons-label">Optional Add-ons (per person)</p>
+        <div class="price-tier"><span class="price-tier-label">Cabin Space</span><span class="price-tier-amount">$195</span></div>
+        <div class="price-tier"><span class="price-tier-label">Meal Plan</span><span class="price-tier-amount">$185</span></div>
+      </div>
+      <p class="price-footnote">An all-inclusive package = Retreat Fee + Cabin Space + Meal Plan. Cabin beds and meal plans are optional — tent camping is included at no extra cost.</p>
+    </div>
+  </div>
+  <p class="pricing-note">All registration rates are per person.</p>
+
+  <div class="policy-section fade-up">
+    <div class="policy-header">
+      <p class="t-eyebrow">Good to Know</p>
+      <h2 class="t-title-md" style="font-family:var(--font-serif)">Cancellation &amp; Registration Policies</h2>
+    </div>
+    <div class="policy-list">
+      <div class="policy-item">
+        <div class="policy-item-num">01</div>
+        <p class="policy-item-text">The last day to cancel a registration and receive a refund is <strong>30 days prior</strong> to the beginning of a retreat.</p>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-num">02</div>
+        <p class="policy-item-text">Cancellations are subject to a <strong>$75 per-person handling fee</strong>.</p>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-num">03</div>
+        <p class="policy-item-text">To cancel a registration and obtain a refund, send a written request to <a href="mailto:<%= site.registrarEmail %>"><%= site.registrarEmail %></a>. A confirmation email will be sent upon receipt.</p>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-num">04</div>
+        <p class="policy-item-text">If registration fees were paid by credit card, the refund will be issued only to the card used for the original transaction.</p>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-num">05</div>
+        <p class="policy-item-text">Hotel room reservations must be cancelled at least <strong>72 hours prior</strong> to your scheduled arrival, or you will be charged the first night's room and tax by the hotel.</p>
+      </div>
+      <div class="policy-item">
+        <div class="policy-item-num">06</div>
+        <p class="policy-item-text">Odyssey Events, LLC reserves the right to refuse service to any individual. If we cancel your registration before the event begins, your registration fees will be refunded. If you are asked to leave the event for any reason, including a violation of our Code of Conduct, no refund will be granted.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reg-note fade-up" style="margin-top:64px">
     <h3 class="reg-note-title">Day Passes</h3>
     <p class="reg-note-text">We understand that work and family sometimes make a full weekend impossible. While we strongly recommend the complete experience — what is more important than the health of your relationship? — day passes are available for those who truly cannot attend the full weekend, and for returning guests from previous years.</p>
     <div style="margin-top:16px"><a href="/contact" class="m-link">Ask about day passes &#8594;</a></div>

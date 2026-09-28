@@ -54,6 +54,7 @@ const retreats = [
     type: 'Camp Retreat',
     title: 'Spring Camp Retreat',
     dates: 'June 22–28, 2027',
+    startDate: '2027-06-22',
     location: 'Northern Maryland',
     image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80',
     colorClass: 'card-spring',
@@ -61,6 +62,8 @@ const retreats = [
     features: ['Private cabin with full bathroom', 'All meals included', 'Swimming pool & lake', 'Miles of hiking trails', 'Nightly bonfires'],
     price: 'Full weekend package',
     inclusive: true,
+    // No live third-party registration link yet — add one here once it exists.
+    regUrl: null,
   },
   {
     slug: 'summer-camp',
@@ -68,6 +71,7 @@ const retreats = [
     type: 'Camp Retreat',
     title: 'Summer Camp Retreat',
     dates: 'July 28 – August 2, 2027',
+    startDate: '2027-07-28',
     location: 'Sierra Nevada, California',
     image: 'https://images.unsplash.com/photo-1662441930578-b2a3e77bf771?auto=format&fit=crop&w=900&q=80',
     colorClass: 'card-summer',
@@ -75,6 +79,7 @@ const retreats = [
     features: ['All meals included', 'Sierra Nevada mountain setting', 'Summer hiking & outdoor activities', 'Evening campfire socials', 'Our newest retreat location'],
     price: 'Full weekend package',
     inclusive: true,
+    regUrl: null,
   },
   {
     slug: 'bay-area-fall-convention',
@@ -82,6 +87,7 @@ const retreats = [
     type: 'Hotel Convention',
     title: 'Bay Area Fall Convention',
     dates: 'October 21–26, 2026',
+    startDate: '2026-10-21',
     location: 'San Jose, California',
     image: 'https://images.unsplash.com/photo-1751258113439-603bb9b1c825?auto=format&fit=crop&w=900&q=80',
     colorClass: 'card-hotel-fall',
@@ -89,6 +95,7 @@ const retreats = [
     features: ['San Jose hotel setting', 'Expanded workshop programming', 'Community and couples themes', 'Day passes available'],
     price: 'Full weekend + day passes',
     inclusive: false,
+    regUrl: 'https://events.event-systems.com/esys/oe26/register',
   },
   {
     slug: 'winter-convention',
@@ -96,6 +103,7 @@ const retreats = [
     type: 'Hotel Convention',
     title: 'Baltimore Winter Convention',
     dates: 'February 12–15, 2027',
+    startDate: '2027-02-12',
     location: 'Baltimore Inner Harbor',
     image: '/images/baltimore-winter.jpg',
     colorClass: 'card-hotel-winter',
@@ -103,8 +111,27 @@ const retreats = [
     features: ['Baltimore Inner Harbor hotel', 'Valentine\'s Weekend programming', 'Broader relationship themes', 'Marc train / Uber accessible', 'Day passes available'],
     price: 'Full weekend + day passes',
     inclusive: false,
+    regUrl: null,
   },
 ];
+
+// Registration for each retreat opens 60 days before it begins. Returns the
+// retreats array with regOpensDate (a Date) and regIsOpen (true only once
+// that window has opened AND a live third-party regUrl has been set above)
+// attached to each retreat, for the Registration page to render against.
+const REG_WINDOW_DAYS = 60;
+function withRegistrationStatus(list) {
+  const now = new Date();
+  return list.map((r) => {
+    const opensDate = new Date(r.startDate);
+    opensDate.setDate(opensDate.getDate() - REG_WINDOW_DAYS);
+    return {
+      ...r,
+      regOpensDate: opensDate,
+      regIsOpen: Boolean(r.regUrl) && now >= opensDate,
+    };
+  });
+}
 
 const workshops = [
   { title: 'Communication & Intimacy', desc: 'Learn to communicate in ways that create closeness rather than distance. Receive your partner\'s experience instead of reacting to it.' },
@@ -133,7 +160,7 @@ app.get('/accommodations', (req, res) => {
 });
 
 app.get('/registration', (req, res) => {
-  res.render('registration', { site, retreats, page: 'registration' });
+  res.render('registration', { site, retreats: withRegistrationStatus(retreats), page: 'registration' });
 });
 
 app.get('/faq', (req, res) => {
@@ -157,11 +184,13 @@ app.post('/contact', contactLimiter, async (req, res) => {
     // silently fail there. Get a key at https://app.sendgrid.com/settings/api_keys
     // and set SENDGRID_API_KEY.
     //
-    // CONTACT_FORM_TO_EMAIL / SENDGRID_FROM_EMAIL: info@odyssey-retreats.com
-    // has no working mailbox yet, so both default to site.email but should be
-    // overridden (in .env / your host's secrets) to a real, verified inbox
-    // until the domain has real email hosting set up.
-    const recipient = process.env.CONTACT_FORM_TO_EMAIL || site.email;
+    // CONTACT_FORM_TO_EMAIL / SENDGRID_FROM_EMAIL: registrar@odyssey-retreats.com
+    // is the live Microsoft 365 mailbox (info@ is just an alias on it), so
+    // contact-form messages default there. Override in .env / your host's
+    // secrets if you'd rather route this elsewhere. Note SendGrid still needs
+    // its own sender/domain verification for this address before it can send
+    // mail "from" it.
+    const recipient = process.env.CONTACT_FORM_TO_EMAIL || site.registrarEmail;
     const sender = process.env.SENDGRID_FROM_EMAIL || recipient;
     if (process.env.SENDGRID_API_KEY) {
       const response = await fetch('https://api.sendgrid.com/v3/mail/send', {

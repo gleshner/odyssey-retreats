@@ -16,7 +16,7 @@
   <div class="reg-intro fade-up">
     <p class="t-eyebrow m-eyebrow on-light" style="margin-bottom:16px">How It Works</p>
     <h2 class="t-title-md" style="color:var(--ink); font-family:var(--font-serif); margin-bottom:20px">All-inclusive weekends.<br>Simple registration.</h2>
-    <p class="t-body-warm">Registration for each retreat stays open until it fills or the retreat begins — and the earlier you register, the better your rate (see Pricing below). The core weekend package is 4 days beginning on Friday and running through Monday, giving us full days of workshops and evening social events every day, including Sunday.</p>
+    <p class="t-body-warm">Registration for each retreat opens 60 days before it begins and stays open until it fills or the retreat begins — the earlier you register, the better your rate (see Pricing below). The core weekend package is 4 days beginning on Friday and running through Monday, giving us full days of workshops and evening social events every day, including Sunday.</p>
   </div>
 
   <div class="reg-grid">
@@ -44,8 +44,11 @@
         <div class="reg-meta-row"><%= f %></div>
         <% }) %>
       </div>
-      <%# TODO: point this at the third-party registration/payment system once Gregory provides the URL %>
-      <a href="/contact?retreat=<%= encodeURIComponent(r.title) %>" class="btn btn-gold" style="width:100%; justify-content:center">Register for This Retreat</a>
+      <% if (r.regIsOpen) { %>
+      <a href="<%= r.regUrl %>" target="_blank" rel="noopener" class="btn btn-gold" style="width:100%; justify-content:center">Register for This Retreat</a>
+      <% } else { %>
+      <div class="btn btn-outline-dark" style="width:100%; justify-content:center; pointer-events:none; opacity:0.6; cursor:default">Registration Opens <%= r.regOpensDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) %></div>
+      <% } %>
     </div>
     <% }) %>
   </div>

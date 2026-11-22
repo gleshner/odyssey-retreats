@@ -86,8 +86,8 @@ const retreats = [
     season: 'Fall',
     type: 'Hotel Convention',
     title: 'Bay Area Fall Convention',
-    dates: 'October 21–26, 2026',
-    startDate: '2026-10-21',
+    dates: 'October 22–26, 2027',
+    startDate: '2027-10-22',
     location: 'San Jose, California',
     image: 'https://images.unsplash.com/photo-1751258113439-603bb9b1c825?auto=format&fit=crop&w=900&q=80',
     colorClass: 'card-hotel-fall',
@@ -95,7 +95,12 @@ const retreats = [
     features: ['San Jose hotel setting', 'Expanded workshop programming', 'Community and couples themes', 'Day passes available'],
     price: 'Full weekend + day passes',
     inclusive: false,
-    regUrl: 'https://events.event-systems.com/esys/oe26/register',
+    // 2026 event has concluded; reset for 2027. Registration opens on an
+    // explicit date this year rather than the standard 60-day-prior rule
+    // (regOpensOverride below), and there's no live registration link yet —
+    // add one here (replacing the old, now-expired oe26 one) once it exists.
+    regOpensOverride: '2027-08-22',
+    regUrl: null,
   },
   {
     slug: 'winter-convention',
@@ -115,16 +120,25 @@ const retreats = [
   },
 ];
 
-// Registration for each retreat opens 60 days before it begins. Returns the
-// retreats array with regOpensDate (a Date) and regIsOpen (true only once
-// that window has opened AND a live third-party regUrl has been set above)
-// attached to each retreat, for the Registration page to render against.
+// Registration for each retreat opens 60 days before it begins, unless a
+// retreat sets its own regOpensOverride date. Returns the retreats array
+// with regOpensDate (a Date) and regIsOpen (true only once that window has
+// opened AND a live third-party regUrl has been set above) attached to each
+// retreat, for the Registration page to render against.
 const REG_WINDOW_DAYS = 60;
 function withRegistrationStatus(list) {
   const now = new Date();
   return list.map((r) => {
-    const opensDate = new Date(r.startDate);
-    opensDate.setDate(opensDate.getDate() - REG_WINDOW_DAYS);
+    let opensDate;
+    if (r.regOpensOverride) {
+      opensDate = new Date(r.regOpensOverride);
+    } else {
+      opensDate = new Date(r.startDate);
+      // Use UTC accessors — startDate is parsed as UTC midnight, and mixing
+      // in local-time getDate()/setDate() here would shift the result by a
+      // day in any timezone behind UTC.
+      opensDate.setUTCDate(opensDate.getUTCDate() - REG_WINDOW_DAYS);
+    }
     return {
       ...r,
       regOpensDate: opensDate,

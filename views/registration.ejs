@@ -32,7 +32,11 @@
       <div class="reg-card-meta">
         <div class="reg-meta-row"><strong>Dates:</strong>&nbsp;<%= r.dates %></div>
         <div class="reg-meta-row"><strong>Location:</strong>&nbsp;<%= r.location %></div>
+        <% if (r.regIsOpen && r.currentRateAmount) { %>
+        <div class="reg-meta-row"><strong>Retreat Fee:</strong>&nbsp;$<%= r.currentRateAmount %> per person (<%= r.currentRateTier %> Rate)</div>
+        <% } else { %>
         <div class="reg-meta-row"><strong>Retreat Fee:</strong>&nbsp;$275&ndash;$325 per person</div>
+        <% } %>
         <% if (r.type === 'Camp Retreat') { %>
         <div class="reg-meta-row"><strong>Includes:</strong>&nbsp;Workshops, seminars &amp; evening events; tent camping included</div>
         <div class="reg-meta-row"><strong>Optional:</strong>&nbsp;Cabin space $195 &middot; Meal plan $185 (per person)</div>

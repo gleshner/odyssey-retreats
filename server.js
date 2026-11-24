@@ -116,9 +116,17 @@ const retreats = [
     features: ['Baltimore Inner Harbor hotel', 'Valentine\'s Weekend programming', 'Broader relationship themes', 'Marc train / Uber accessible', 'Day passes available'],
     price: 'Full weekend + day passes',
     inclusive: false,
-    regUrl: null,
+    // Registration opened now (ahead of the standard 60-day-prior rule) with
+    // a live third-party link. Update currentRateTier as the rate advances.
+    regOpensOverride: '2026-11-24',
+    regUrl: 'https://events.event-systems.com/esys/oe26/register',
+    currentRateTier: 'Early',
   },
 ];
+
+// Dollar amount for each named rate tier, shared with the Pricing section
+// below and used to show a retreat's current specific rate once it's open.
+const RATE_TIERS = { Early: 275, Standard: 300, 'Last Minute': 325 };
 
 // Registration for each retreat opens 60 days before it begins, unless a
 // retreat sets its own regOpensOverride date. Returns the retreats array
@@ -143,6 +151,7 @@ function withRegistrationStatus(list) {
       ...r,
       regOpensDate: opensDate,
       regIsOpen: Boolean(r.regUrl) && now >= opensDate,
+      currentRateAmount: r.currentRateTier ? RATE_TIERS[r.currentRateTier] : null,
     };
   });
 }
